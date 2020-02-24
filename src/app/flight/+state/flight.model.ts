@@ -1,3 +1,5 @@
+import { Flight } from "../service/flight.model";
+
 export interface FlightStateModel {
-  demo: string[];
+  flightList: Flight[];
 }

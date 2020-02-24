@@ -2,9 +2,10 @@ import { State, Selector, Action, StateContext } from "@ngxs/store";
 import { SetFlight } from "./flight.action";
 import { FlightStateModel } from "./flight.model";
 import { Injectable } from "@angular/core";
+import { Flight } from "../service/flight.model";
 
 const defaultState: FlightStateModel = {
-  demo: []
+  flightList: []
 };
 
 @State<FlightStateModel>({
@@ -16,14 +17,17 @@ export class FlightState {
   constructor() {}
 
   @Selector()
-  static GetFlightLists(state: FlightStateModel): string[] {
-    return state.demo;
+  static GetFlightLists(state: FlightStateModel): Flight[] {
+    return state.flightList;
   }
 
   @Action(SetFlight)
-  SetDate({ getState, patchState }: StateContext<FlightStateModel>): void {
+  SetFlight(
+    { patchState }: StateContext<FlightStateModel>,
+    { payload }: SetFlight
+  ): void {
     patchState({
-      demo: ["RM", "20"]
+      flightList: payload
     });
   }
 }

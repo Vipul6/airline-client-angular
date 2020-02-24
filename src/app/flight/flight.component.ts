@@ -22,19 +22,22 @@ export class FlightComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject();
 
   ngOnInit(): void {
-    this.store.dispatch(new SetFlight());
     this.serviceCall();
-
-    // console.log(this.store.selectSnapshot(FlightState.GetFlightLists));
   }
 
   serviceCall(): void {
     this.flightService
       .getFlights()
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(res => {
-        console.log(res);
-      });
+      .subscribe(
+        res => {
+          this.store.dispatch(new SetFlight(res));
+          console.log(this.store.selectSnapshot(FlightState.GetFlightLists));
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   ngOnDestroy(): void {
