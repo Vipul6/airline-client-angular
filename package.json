@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "json-server --watch src/server/db.json --port 3333"
+    "server": "json-server --watch src/server/db.json --port 3333",
+    "serve": "start ng s -o && start json-server --watch src/server/db.json --port 3333"
   },
   "private": true,
   "dependencies": {
