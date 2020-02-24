@@ -1,1 +1,36 @@
-<p>flight works!</p>
+<ng-container *ngIf="flightList.length">
+  <div *ngFor="let element of flightList" class="card-wrapper">
+    <div class="card-content">
+      <div class="img-container">
+        <img
+          [src]="getImageSource(element.name)"
+          alt="airline-logo"
+          class="airline-logo"
+        />
+        <span class="flight-name">{{ element.name }}</span>
+      </div>
+      <div class="details-container">
+        <div class="start">
+          <span class="flight-time">{{ element.departureTime }}</span>
+          <span class="text-title">{{ element.source }}</span>
+        </div>
+        <div class="middle">
+          <span class="time-duration">
+            {{ element.duration }}
+          </span>
+          <hr class="divider" />
+        </div>
+        <div class="start">
+          <span class="flight-time">{{ element.arrivalTime }}</span>
+          <span class="text-title">{{ element.destination }}</span>
+        </div>
+      </div>
+      <div class="action-container">
+        <div>
+          <button mat-stroked-button class="primary-btn">Check in</button>
+          <button mat-stroked-button class="secondary-btn">In flight</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

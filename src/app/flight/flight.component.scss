@@ -1,0 +1,81 @@
+$purple-font-color: #391775;
+$box-shadow: #00000033;
+$border-color: #979797;
+
+.card-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  .card-content {
+    display: flex;
+    width: 70%;
+    padding: 25px;
+    box-shadow: 0 1px 8px 0 $box-shadow;
+
+    .img-container {
+      display: flex;
+      align-items: center;
+      flex: 1;
+
+      .airline-logo {
+        width: 30px;
+        height: 30px;
+      }
+
+      .flight-name {
+        color: $purple-font-color;
+        font-weight: bold;
+        margin-left: 15px;
+        font-size: medium;
+      }
+    }
+
+    .details-container {
+      flex: 1;
+      display: flex;
+
+      .start {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+
+        .flight-time {
+          font-weight: bold;
+          font-size: medium;
+        }
+
+        .text-title {
+          font-weight: bold;
+        }
+      }
+
+      .middle {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        flex-direction: column;
+
+        .divider {
+          width: 80px;
+          border-top: 3px solid $border-color;
+        }
+
+        .time-duration {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .action-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .card-content:hover {
+    box-shadow: 0 4px 8px 0 $box-shadow;
+  }
+}

@@ -2,7 +2,7 @@
   "flights": [
     {
       "id": 1,
-      "name": "Vistara UK",
+      "name": "Vistara-UK",
       "departureTime": "13:00",
       "arrivalTime": "15:00",
       "duration": "2 hrs",
@@ -224,6 +224,528 @@
       "duration": "1 hrs",
       "source": "Bangalore",
       "destination": "Goa",
+      "seatsDetail": [
+        {
+          "id": 1,
+          "number": "1A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 2,
+          "number": "1B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 3,
+          "number": "1C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 4,
+          "number": "1D",
+          "isOccupied": true,
+          "passengerId": 1
+        },
+        {
+          "id": 5,
+          "number": "1E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 6,
+          "number": "1F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 7,
+          "number": "2A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 8,
+          "number": "2B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 9,
+          "number": "2C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 10,
+          "number": "2D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 11,
+          "number": "2E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 12,
+          "number": "2F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 13,
+          "number": "3A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 14,
+          "number": "3B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 15,
+          "number": "3C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 16,
+          "number": "3D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 17,
+          "number": "3E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 18,
+          "number": "3F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 19,
+          "number": "4A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 20,
+          "number": "4B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 21,
+          "number": "4C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 22,
+          "number": "4D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 23,
+          "number": "4E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 24,
+          "number": "4F",
+          "isOccupied": false,
+          "passengerId": null
+        }
+      ],
+      "passengersDetail": [
+        {
+          "ancilliaryServices": ["Food & meals"],
+          "meals": ["Chinese", "French", "Non-veg"],
+          "shoppingItems": ["Gadgets"],
+          "id": 1,
+          "name": "Ankita Sahoo",
+          "dateOfBirth": "15/02/1995",
+          "seatNumber": "1D",
+          "isCheckedIn": true,
+          "hasInfant": false,
+          "isWheelChairRequired": false,
+          "passportNumber": "5432167",
+          "address": "Kalinga, Orisa"
+        }
+      ],
+      "shoppingItems": ["Jewellery", "Toys", "Gadgets"],
+      "ancilliaryServices": ["Excess baggage", "Food & meals"],
+      "meals": ["Veg", "Non-veg", "Chinese", "French"]
+    },
+    {
+      "id": 3,
+      "name": "Go-Air",
+      "departureTime": "17:00",
+      "arrivalTime": "20:00",
+      "duration": "3 hrs",
+      "source": "Bangalore",
+      "destination": "Ranchi",
+      "seatsDetail": [
+        {
+          "id": 1,
+          "number": "1A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 2,
+          "number": "1B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 3,
+          "number": "1C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 4,
+          "number": "1D",
+          "isOccupied": true,
+          "passengerId": 1
+        },
+        {
+          "id": 5,
+          "number": "1E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 6,
+          "number": "1F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 7,
+          "number": "2A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 8,
+          "number": "2B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 9,
+          "number": "2C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 10,
+          "number": "2D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 11,
+          "number": "2E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 12,
+          "number": "2F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 13,
+          "number": "3A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 14,
+          "number": "3B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 15,
+          "number": "3C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 16,
+          "number": "3D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 17,
+          "number": "3E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 18,
+          "number": "3F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 19,
+          "number": "4A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 20,
+          "number": "4B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 21,
+          "number": "4C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 22,
+          "number": "4D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 23,
+          "number": "4E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 24,
+          "number": "4F",
+          "isOccupied": false,
+          "passengerId": null
+        }
+      ],
+      "passengersDetail": [
+        {
+          "ancilliaryServices": ["Food & meals"],
+          "meals": ["Chinese", "French", "Non-veg"],
+          "shoppingItems": ["Gadgets"],
+          "id": 1,
+          "name": "Ankita Sahoo",
+          "dateOfBirth": "15/02/1995",
+          "seatNumber": "1D",
+          "isCheckedIn": true,
+          "hasInfant": false,
+          "isWheelChairRequired": false,
+          "passportNumber": "5432167",
+          "address": "Kalinga, Orisa"
+        }
+      ],
+      "shoppingItems": ["Jewellery", "Toys", "Gadgets"],
+      "ancilliaryServices": ["Excess baggage", "Food & meals"],
+      "meals": ["Veg", "Non-veg", "Chinese", "French"]
+    },
+    {
+      "id": 4,
+      "name": "SpiceJet",
+      "departureTime": "15:00",
+      "arrivalTime": "17:30",
+      "duration": "2.5 hrs",
+      "source": "Bangalore",
+      "destination": "Chandigarh",
+      "seatsDetail": [
+        {
+          "id": 1,
+          "number": "1A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 2,
+          "number": "1B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 3,
+          "number": "1C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 4,
+          "number": "1D",
+          "isOccupied": true,
+          "passengerId": 1
+        },
+        {
+          "id": 5,
+          "number": "1E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 6,
+          "number": "1F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 7,
+          "number": "2A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 8,
+          "number": "2B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 9,
+          "number": "2C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 10,
+          "number": "2D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 11,
+          "number": "2E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 12,
+          "number": "2F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 13,
+          "number": "3A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 14,
+          "number": "3B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 15,
+          "number": "3C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 16,
+          "number": "3D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 17,
+          "number": "3E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 18,
+          "number": "3F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 19,
+          "number": "4A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 20,
+          "number": "4B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 21,
+          "number": "4C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 22,
+          "number": "4D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 23,
+          "number": "4E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 24,
+          "number": "4F",
+          "isOccupied": false,
+          "passengerId": null
+        }
+      ],
+      "passengersDetail": [
+        {
+          "ancilliaryServices": ["Food & meals"],
+          "meals": ["Chinese", "French", "Non-veg"],
+          "shoppingItems": ["Gadgets"],
+          "id": 1,
+          "name": "Ankita Sahoo",
+          "dateOfBirth": "15/02/1995",
+          "seatNumber": "1D",
+          "isCheckedIn": true,
+          "hasInfant": false,
+          "isWheelChairRequired": false,
+          "passportNumber": "5432167",
+          "address": "Kalinga, Orisa"
+        }
+      ],
+      "shoppingItems": ["Jewellery", "Toys", "Gadgets"],
+      "ancilliaryServices": ["Excess baggage", "Food & meals"],
+      "meals": ["Veg", "Non-veg", "Chinese", "French"]
+    },
+    {
+      "id": 5,
+      "name": "Air-Asia",
+      "departureTime": "13:30",
+      "arrivalTime": "16:30",
+      "duration": "3 hrs",
+      "source": "Bangalore",
+      "destination": "Shimla",
       "seatsDetail": [
         {
           "id": 1,

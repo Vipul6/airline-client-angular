@@ -8,11 +8,13 @@ import { FlightRoutingModule } from "./flight-routing.module";
 import { CheckInComponent } from "./check-in/check-in.component";
 import { InFlightComponent } from "./in-flight/in-flight.component";
 import { environment } from "src/environments/environment";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [FlightComponent, CheckInComponent, InFlightComponent],
   imports: [
     CommonModule,
+    SharedModule,
     NgxsModule.forRoot([FlightState], {
       developmentMode: !environment.production
     }),

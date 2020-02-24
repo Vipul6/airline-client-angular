@@ -1,11 +1,13 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Store } from "@ngxs/store";
 import { SetFlight } from "./+state/flight.action";
-import { FlightState } from "./+state/flight.state";
 import { Router } from "@angular/router";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { FlightService } from "./service/flight.service";
+import { SnackbarService } from "../shared/services/snackbar.service";
+import { Flight } from "./service/flight.model";
+import { FlightState } from "./+state/flight.state";
 
 @Component({
   selector: "app-flight",
@@ -16,13 +18,18 @@ export class FlightComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store,
     private router: Router,
-    private flightService: FlightService
+    private flightService: FlightService,
+    private snackbarService: SnackbarService
   ) {}
 
   private unsubscribe$ = new Subject();
+  flightList: Flight[] = [];
 
   ngOnInit(): void {
-    this.serviceCall();
+    this.flightList = this.store.selectSnapshot(FlightState.GetFlightLists);
+    if (!this.flightList.length) {
+      this.serviceCall();
+    }
   }
 
   serviceCall(): void {
@@ -32,12 +39,19 @@ export class FlightComponent implements OnInit, OnDestroy {
       .subscribe(
         res => {
           this.store.dispatch(new SetFlight(res));
-          console.log(this.store.selectSnapshot(FlightState.GetFlightLists));
+          this.flightList = res;
         },
         error => {
-          console.log(error);
+          this.snackbarService.openSnackBar(
+            "Something went wrong please try again after some time.",
+            "failure-status"
+          );
         }
       );
+  }
+
+  getImageSource(flightName: string): string {
+    return `../../assets/images/${flightName}.png`;
   }
 
   ngOnDestroy(): void {
