@@ -1,0 +1,394 @@
+{
+  "flights": [
+    {
+      "id": 1,
+      "name": "Vistara UK",
+      "departureTime": "13:00",
+      "arrivalTime": "15:00",
+      "duration": "2 hrs",
+      "source": "Bangalore",
+      "destination": "Delhi",
+      "seatsDetail": [
+        {
+          "id": 1,
+          "number": "1A",
+          "isOccupied": true,
+          "passengerId": 2
+        },
+        {
+          "id": 2,
+          "number": "1B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 3,
+          "number": "1C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 4,
+          "number": "1D",
+          "isOccupied": true,
+          "passengerId": 1
+        },
+        {
+          "id": 5,
+          "number": "1E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 6,
+          "number": "1F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 7,
+          "number": "2A",
+          "isOccupied": true,
+          "passengerId": 3
+        },
+        {
+          "id": 8,
+          "number": "2B",
+          "isOccupied": true,
+          "passengerId": 4
+        },
+        {
+          "id": 9,
+          "number": "2C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 10,
+          "number": "2D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 11,
+          "number": "2E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 12,
+          "number": "2F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 13,
+          "number": "3A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 14,
+          "number": "3B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 15,
+          "number": "3C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 16,
+          "number": "3D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 17,
+          "number": "3E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 18,
+          "number": "3F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 19,
+          "number": "4A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 20,
+          "number": "4B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 21,
+          "number": "4C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 22,
+          "number": "4D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 23,
+          "number": "4E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 24,
+          "number": "4F",
+          "isOccupied": false,
+          "passengerId": null
+        }
+      ],
+      "passengersDetail": [
+        {
+          "ancilliaryServices": ["Cold-drinks", "Movie", "Snacks"],
+          "meals": ["Chinese", "French", "Non-veg", "Veg"],
+          "shoppingItems": ["Jewellery"],
+          "id": 1,
+          "name": "Arush Mehta",
+          "dateOfBirth": "20/11/1998",
+          "seatNumber": "1D",
+          "isCheckedIn": true,
+          "hasInfant": false,
+          "isWheelChairRequired": false,
+          "passportNumber": "5432167",
+          "address": "Ranchi, Jharkhand"
+        },
+        {
+          "ancilliaryServices": ["Cold-drinks", "Snacks", "Movie"],
+          "meals": ["Non-veg", "French", "Chinese", "Veg"],
+          "shoppingItems": ["Jewellery"],
+          "id": 2,
+          "name": "Ayushi Mehta",
+          "dateOfBirth": "20/11/1998",
+          "seatNumber": "1A",
+          "isCheckedIn": true,
+          "hasInfant": true,
+          "isWheelChairRequired": false,
+          "passportNumber": "5432167",
+          "address": "Ranchi, Jharkhand"
+        },
+        {
+          "ancilliaryServices": ["Cold-drinks", "Snacks"],
+          "meals": ["Chinese"],
+          "shoppingItems": [],
+          "id": 3,
+          "name": "Rahul Mehta",
+          "dateOfBirth": "20/11/1997",
+          "seatNumber": "2A",
+          "isCheckedIn": false,
+          "hasInfant": false,
+          "isWheelChairRequired": false,
+          "passportNumber": "92189",
+          "address": "Kangra"
+        },
+        {
+          "ancilliaryServices": ["Movie", "Snacks", "Cold-drinks"],
+          "meals": ["Veg"],
+          "shoppingItems": [],
+          "id": 4,
+          "name": "test",
+          "dateOfBirth": "08/09/1222",
+          "seatNumber": "2B",
+          "isCheckedIn": true,
+          "hasInfant": false,
+          "isWheelChairRequired": false,
+          "passportNumber": "",
+          "address": "test"
+        }
+      ],
+      "shoppingItems": ["Jewellery"],
+      "ancilliaryServices": ["Movie", "Snacks", "Cold-drinks"],
+      "meals": ["Veg", "Non-veg", "Chinese", "French"]
+    },
+    {
+      "id": 2,
+      "name": "IndiGo",
+      "departureTime": "16:00",
+      "arrivalTime": "17:00",
+      "duration": "1 hrs",
+      "source": "Bangalore",
+      "destination": "Goa",
+      "seatsDetail": [
+        {
+          "id": 1,
+          "number": "1A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 2,
+          "number": "1B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 3,
+          "number": "1C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 4,
+          "number": "1D",
+          "isOccupied": true,
+          "passengerId": 1
+        },
+        {
+          "id": 5,
+          "number": "1E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 6,
+          "number": "1F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 7,
+          "number": "2A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 8,
+          "number": "2B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 9,
+          "number": "2C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 10,
+          "number": "2D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 11,
+          "number": "2E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 12,
+          "number": "2F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 13,
+          "number": "3A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 14,
+          "number": "3B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 15,
+          "number": "3C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 16,
+          "number": "3D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 17,
+          "number": "3E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 18,
+          "number": "3F",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 19,
+          "number": "4A",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 20,
+          "number": "4B",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 21,
+          "number": "4C",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 22,
+          "number": "4D",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 23,
+          "number": "4E",
+          "isOccupied": false,
+          "passengerId": null
+        },
+        {
+          "id": 24,
+          "number": "4F",
+          "isOccupied": false,
+          "passengerId": null
+        }
+      ],
+      "passengersDetail": [
+        {
+          "ancilliaryServices": ["Food & meals"],
+          "meals": ["Chinese", "French", "Non-veg"],
+          "shoppingItems": ["Gadgets"],
+          "id": 1,
+          "name": "Ankita Sahoo",
+          "dateOfBirth": "15/02/1995",
+          "seatNumber": "1D",
+          "isCheckedIn": true,
+          "hasInfant": false,
+          "isWheelChairRequired": false,
+          "passportNumber": "5432167",
+          "address": "Kalinga, Orisa"
+        }
+      ],
+      "shoppingItems": ["Jewellery", "Toys", "Gadgets"],
+      "ancilliaryServices": ["Excess baggage", "Food & meals"],
+      "meals": ["Veg", "Non-veg", "Chinese", "French"]
+    }
+  ]
+}

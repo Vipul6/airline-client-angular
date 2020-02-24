@@ -1,0 +1,33 @@
+<header class="nav-container">
+  <div class="navbar">
+    <div class="logo-container">
+      <img
+        src="../../../assets/images/flight-logo.png"
+        alt="logo"
+        class="flight-logo"
+      />
+      <span class="flight-logo-text">Cruzer Airlines</span>
+    </div>
+    <nav class="nav-links-container">
+      <a
+        [ngClass]="activeLink === '' ? 'active-link' : 'links'"
+        (click)="handleNavigation('')"
+        >Home
+        <span [ngClass]="activeLink === '' ? 'active-bar' : ''"></span>
+      </a>
+      <a
+        [ngClass]="activeLink === 'flights' ? 'active-link' : 'links'"
+        routerLink="/flights"
+        (click)="handleNavigation('flights')"
+        >Flights
+        <span [ngClass]="activeLink === 'flights' ? 'active-bar' : ''"></span>
+      </a>
+      <a
+        [ngClass]="activeLink === 'about' ? 'active-link' : 'links'"
+        (click)="handleNavigation('about')"
+        >About
+        <span [ngClass]="activeLink === 'about' ? 'active-bar' : ''"></span>
+      </a>
+    </nav>
+  </div>
+</header>
