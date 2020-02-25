@@ -13,6 +13,8 @@ body {
 }
 
 .failure-status {
+  display: flex;
+  align-items: center;
   background-color: $red-alert;
   font-weight: bold;
   color: $white-font-color;

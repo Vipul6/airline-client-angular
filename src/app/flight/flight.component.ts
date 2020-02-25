@@ -24,15 +24,23 @@ export class FlightComponent implements OnInit, OnDestroy {
 
   private unsubscribe$ = new Subject();
   flightList: Flight[] = [];
+  showSpinner: boolean;
+  role: string;
 
   ngOnInit(): void {
+    this.udpateRole();
     this.flightList = this.store.selectSnapshot(FlightState.GetFlightLists);
     if (!this.flightList.length) {
       this.serviceCall();
     }
   }
 
+  udpateRole(): void {
+    this.role = "staff";
+  }
+
   serviceCall(): void {
+    this.showSpinner = true;
     this.flightService
       .getFlights()
       .pipe(takeUntil(this.unsubscribe$))
@@ -40,8 +48,10 @@ export class FlightComponent implements OnInit, OnDestroy {
         res => {
           this.store.dispatch(new SetFlight(res));
           this.flightList = res;
+          this.showSpinner = false;
         },
         error => {
+          this.showSpinner = false;
           this.snackbarService.openSnackBar(
             "Something went wrong please try again after some time.",
             "failure-status"
@@ -52,6 +62,10 @@ export class FlightComponent implements OnInit, OnDestroy {
 
   getImageSource(flightName: string): string {
     return `../../assets/images/${flightName}.png`;
+  }
+
+  handleNavigation(flightId: number, dest: string): void {
+    this.router.navigate([`flights/${flightId}/${dest}`]);
   }
 
   ngOnDestroy(): void {

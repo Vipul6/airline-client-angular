@@ -1,0 +1,41 @@
+$spinner-color: #0077dd;
+$spinner-backdrop-color: #fff;
+
+.spinner-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .spinner-backdrop {
+    background-color: $spinner-backdrop-color;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+  }
+
+  .spinner {
+    width: 80px;
+    height: 80px;
+    border: 8px solid transparent;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-top-color: $spinner-color;
+    border-bottom-color: $spinner-color;
+    animation: spinner 0.7s ease infinite;
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

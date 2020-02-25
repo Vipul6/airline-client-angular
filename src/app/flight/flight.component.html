@@ -11,8 +11,13 @@
       </div>
       <div class="details-container">
         <div class="start">
-          <span class="flight-time">{{ element.departureTime }}</span>
-          <span class="text-title">{{ element.source }}</span>
+          <div class="start-content">
+            <span class="flight-time">{{ element.departureTime }}</span>
+            <span class="text-title">{{ element.source }}</span>
+          </div>
+          <div class="status-logo">
+            <img src="../../assets/svg/flight-takeoff.svg" />
+          </div>
         </div>
         <div class="middle">
           <span class="time-duration">
@@ -21,16 +26,54 @@
           <hr class="divider" />
         </div>
         <div class="start">
-          <span class="flight-time">{{ element.arrivalTime }}</span>
-          <span class="text-title">{{ element.destination }}</span>
+          <div class="start-content">
+            <span class="flight-time">{{ element.arrivalTime }}</span>
+            <span class="text-title">{{ element.destination }}</span>
+          </div>
+          <div class="status-logo">
+            <img src="../../assets/svg/flight-land.svg" />
+          </div>
         </div>
       </div>
       <div class="action-container">
-        <div>
-          <button mat-stroked-button class="primary-btn">Check in</button>
-          <button mat-stroked-button class="secondary-btn">In flight</button>
+        <div *ngIf="role === 'staff'">
+          <button
+            mat-stroked-button
+            class="primary-btn"
+            (click)="handleNavigation(element.id, 'check-in')"
+          >
+            Check in
+          </button>
+          <button
+            mat-stroked-button
+            class="secondary-btn"
+            (click)="handleNavigation(element.id, 'in-flight')"
+          >
+            In flight
+          </button>
+        </div>
+
+        <div *ngIf="role === 'admin'">
+          <button
+            mat-stroked-button
+            class="primary-btn"
+            (click)="handleNavigation(element.id, 'manage-passengers')"
+          >
+            Manage passengers
+          </button>
+          <button
+            mat-stroked-button
+            class="secondary-btn"
+            (click)="handleNavigation(element.id, 'manage-services')"
+          >
+            Manage services
+          </button>
         </div>
       </div>
     </div>
   </div>
+</ng-container>
+
+<ng-container *ngIf="showSpinner">
+  <app-spinner></app-spinner>
 </ng-container>
