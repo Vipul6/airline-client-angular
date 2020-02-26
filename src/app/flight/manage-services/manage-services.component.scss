@@ -1,0 +1,80 @@
+$box-shadow: #00000033;
+$box-background: #f1f0f0;
+
+.services-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  flex-direction: column;
+
+  .service-content {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 $box-shadow;
+    padding: 15px;
+    width: 90%;
+    background: $box-background;
+    margin-top: 30px;
+
+    .title {
+      display: flex;
+      font-weight: bold;
+      justify-content: center;
+      margin-top: 20px;
+      margin-top: 10px;
+    }
+
+    .item-container {
+      display: flex;
+      align-items: center;
+
+      .item-name {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+      }
+
+      .action-container {
+        display: flex;
+        flex: 1;
+      }
+    }
+
+    .add-btn {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.delete-container {
+  .header-title {
+    font-weight: bold;
+    font-size: larger;
+  }
+  .title {
+    font-weight: bold;
+  }
+
+  .action-container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.update-container,
+.add-container {
+  width: 300px;
+
+  .header-title {
+    font-weight: bold;
+    font-size: larger;
+  }
+
+  .action-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

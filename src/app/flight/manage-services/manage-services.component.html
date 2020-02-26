@@ -1,0 +1,167 @@
+<div class="services-container" *ngIf="flightList.length">
+  <div class="service-content">
+    <div><span class="title">Ancilliary Services</span></div>
+    <div
+      *ngFor="
+        let item of flightList[flightIndex].ancilliaryServices;
+        let i = index
+      "
+      class="item-container"
+    >
+      <span class="item-name">{{ i + 1 }}. {{ item }}</span>
+      <div class="action-container">
+        <button
+          mat-button
+          class="primary-btn"
+          (click)="openUpdateDialog('ancilliaryServices', item)"
+        >
+          Update
+        </button>
+        <button
+          mat-button
+          class="secondary-btn"
+          (click)="openDeleteDialog('ancilliaryServices', item)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+    <div class="add-btn">
+      <button
+        mat-button
+        class="secondary-btn"
+        (click)="openAddDialog('ancilliaryServices')"
+      >
+        Add more
+      </button>
+    </div>
+  </div>
+
+  <div class="service-content">
+    <div><span class="title">Shopping items</span></div>
+    <div
+      *ngFor="let item of flightList[flightIndex].shoppingItems; let i = index"
+      class="item-container"
+    >
+      <span class="item-name">{{ i + 1 }}. {{ item }}</span>
+      <div class="action-container">
+        <button
+          mat-button
+          class="primary-btn"
+          (click)="openUpdateDialog('shoppingItems', item)"
+        >
+          Update
+        </button>
+        <button
+          mat-button
+          class="secondary-btn"
+          (click)="openDeleteDialog('shoppingItems', item)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+    <div class="add-btn">
+      <button
+        mat-button
+        class="secondary-btn"
+        (click)="openAddDialog('shoppingItems')"
+      >
+        Add more
+      </button>
+    </div>
+  </div>
+
+  <div class="service-content">
+    <div><span class="title">Meals</span></div>
+    <div
+      *ngFor="let item of flightList[flightIndex].meals; let i = index"
+      class="item-container"
+    >
+      <span class="item-name">{{ i + 1 }}. {{ item }}</span>
+      <div class="action-container">
+        <button
+          mat-button
+          class="primary-btn"
+          (click)="openUpdateDialog('meals', item)"
+        >
+          Update
+        </button>
+        <button
+          mat-button
+          class="secondary-btn"
+          (click)="openDeleteDialog('meals', item)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+    <div class="add-btn">
+      <button mat-button class="secondary-btn" (click)="openAddDialog('meals')">
+        Add more
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #deleteServiceTemplate>
+  <div class="delete-container">
+    <span class="header-title">Delete service</span>
+    <div>
+      <span class="title"
+        >Are you sure? Deleting of item will also remove from passenger's
+        service who has choosen this service.</span
+      >
+    </div>
+    <div class="action-container">
+      <button mat-button class="primary-btn" (click)="closeDialog()">
+        Cancel
+      </button>
+      <button mat-button class="secondary-btn" (click)="deleteService()">
+        Delete
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #updateServiceTemplate>
+  <div class="update-container">
+    <span class="header-title">Update service</span>
+    <div>
+      <form [formGroup]="serviceForm">
+        <mat-form-field>
+          <input matInput formControlName="detail" />
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="action-container">
+      <button mat-button class="primary-btn" (click)="closeDialog()">
+        Cancel
+      </button>
+      <button mat-button class="secondary-btn" (click)="updateService()">
+        Update
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #addServiceTemplate>
+  <div class="add-container">
+    <span class="header-title">Add service</span>
+    <div>
+      <form [formGroup]="serviceForm">
+        <mat-form-field>
+          <input matInput formControlName="detail" />
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="action-container">
+      <button mat-button class="primary-btn" (click)="closeDialog()">
+        Cancel
+      </button>
+      <button mat-button class="secondary-btn" (click)="addService()">
+        Add
+      </button>
+    </div>
+  </div>
+</ng-template>

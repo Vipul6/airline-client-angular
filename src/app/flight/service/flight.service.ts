@@ -15,4 +15,11 @@ export class FlightService {
   getFlights(): Observable<Flight[]> {
     return this.httpClient.get<Flight[]>(`${this.BASE_URL}/flights`);
   }
+
+  updateFlight(flightId: number, payload: Flight): Observable<Flight> {
+    return this.httpClient.put<Flight>(
+      `${this.BASE_URL}/flights/${flightId}`,
+      payload
+    );
+  }
 }

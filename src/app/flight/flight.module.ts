@@ -9,9 +9,17 @@ import { CheckInComponent } from "./check-in/check-in.component";
 import { InFlightComponent } from "./in-flight/in-flight.component";
 import { environment } from "src/environments/environment";
 import { SharedModule } from "../shared/shared.module";
+import { ManagePassengersComponent } from "./manage-passengers/manage-passengers.component";
+import { ManageServicesComponent } from "./manage-services/manage-services.component";
 
 @NgModule({
-  declarations: [FlightComponent, CheckInComponent, InFlightComponent],
+  declarations: [
+    FlightComponent,
+    CheckInComponent,
+    InFlightComponent,
+    ManagePassengersComponent,
+    ManageServicesComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,

@@ -15,17 +15,17 @@ import { FlightState } from "./+state/flight.state";
   styleUrls: ["./flight.component.scss"]
 })
 export class FlightComponent implements OnInit, OnDestroy {
+  private unsubscribe$ = new Subject();
+  flightList: Flight[] = [];
+  showSpinner: boolean;
+  role: string;
+
   constructor(
     private store: Store,
     private router: Router,
     private flightService: FlightService,
     private snackbarService: SnackbarService
   ) {}
-
-  private unsubscribe$ = new Subject();
-  flightList: Flight[] = [];
-  showSpinner: boolean;
-  role: string;
 
   ngOnInit(): void {
     this.udpateRole();
@@ -36,7 +36,7 @@ export class FlightComponent implements OnInit, OnDestroy {
   }
 
   udpateRole(): void {
-    this.role = "staff";
+    this.role = "admin";
   }
 
   serviceCall(): void {

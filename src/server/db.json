@@ -208,7 +208,7 @@
           "isCheckedIn": true,
           "hasInfant": false,
           "isWheelChairRequired": false,
-          "passportNumber": "",
+          "passportNumber": "1251631",
           "address": "test"
         }
       ],
@@ -373,7 +373,7 @@
       "passengersDetail": [
         {
           "ancilliaryServices": ["Food & meals"],
-          "meals": ["Chinese", "French", "Non-veg"],
+          "meals": ["Chinese", "Non-veg"],
           "shoppingItems": ["Gadgets"],
           "id": 1,
           "name": "Ankita Sahoo",
@@ -388,7 +388,7 @@
       ],
       "shoppingItems": ["Jewellery", "Toys", "Gadgets"],
       "ancilliaryServices": ["Excess baggage", "Food & meals"],
-      "meals": ["Veg", "Non-veg", "Chinese", "French"]
+      "meals": ["Veg", "Non-veg", "Chinese"]
     },
     {
       "id": 3,
@@ -895,11 +895,11 @@
       "passengersDetail": [
         {
           "ancilliaryServices": ["Food & meals"],
-          "meals": ["Chinese", "French", "Non-veg"],
+          "meals": ["Chinese", "Non-veg"],
           "shoppingItems": ["Gadgets"],
           "id": 1,
-          "name": "Ankita Sahoo",
-          "dateOfBirth": "15/02/1995",
+          "name": "Arusha Chauhan",
+          "dateOfBirth": "15/02/1998",
           "seatNumber": "1D",
           "isCheckedIn": true,
           "hasInfant": false,
@@ -910,7 +910,7 @@
       ],
       "shoppingItems": ["Jewellery", "Toys", "Gadgets"],
       "ancilliaryServices": ["Excess baggage", "Food & meals"],
-      "meals": ["Veg", "Non-veg", "Chinese", "French"]
+      "meals": ["Veg", "Non-veg", "Chinese", "American"]
     }
   ]
 }
