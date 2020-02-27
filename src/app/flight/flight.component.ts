@@ -36,7 +36,11 @@ export class FlightComponent implements OnInit, OnDestroy {
   }
 
   udpateRole(): void {
-    this.role = "admin";
+    this.flightService.role
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(res => {
+        this.role = res;
+      });
   }
 
   serviceCall(): void {

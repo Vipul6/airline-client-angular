@@ -76,5 +76,90 @@ $link-hover-color: #61dafb;
         z-index: 1;
       }
     }
+
+    .roles-container {
+      .login-button {
+        display: flex;
+        width: 100px;
+        height: 60px;
+        justify-content: center;
+        border: none;
+        outline: none;
+        color: $nav-font-color;
+        background: $nav-background;
+        align-items: center;
+
+        .google-logo {
+          height: 30px;
+          width: 30px;
+        }
+
+        .google-logo-text {
+          display: flex;
+          width: 50%;
+          margin-left: 5px;
+          justify-content: center;
+        }
+      }
+
+      .login-button:hover {
+        cursor: pointer;
+        color: $link-hover-color;
+      }
+
+      .login-button:hover .google-logo {
+        animation: rotate 1s;
+      }
+
+      .roles-img {
+        width: 35px;
+        height: 35px;
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .role-wrapper-container {
+        position: absolute;
+        z-index: 1;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 12px;
+        margin-left: -1.2%;
+
+        .role-wrapper {
+          background: $nav-background;
+          border-radius: 5px;
+          padding: 15px;
+          color: $nav-font-color;
+
+          .role-options {
+            display: flex;
+            flex-direction: column;
+
+            .role {
+              padding: 5px;
+              color: $nav-font-color;
+            }
+
+            .active {
+              color: $link-hover-color;
+            }
+
+            .role:hover {
+              cursor: pointer;
+              color: $link-hover-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
   }
 }
