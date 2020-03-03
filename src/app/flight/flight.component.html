@@ -27,8 +27,20 @@
       </div>
       <div class="action-container">
         <div>
-          <button mat-stroked-button class="primary-btn">Check in</button>
-          <button mat-stroked-button class="secondary-btn">In flight</button>
+          <button
+            mat-stroked-button
+            class="primary-btn"
+            (click)="handleNavigation(element.id, 'check-in')"
+          >
+            Check in
+          </button>
+          <button
+            mat-stroked-button
+            class="secondary-btn"
+            (click)="handleNavigation(element.id, 'in-flight')"
+          >
+            In flight
+          </button>
         </div>
       </div>
     </div>

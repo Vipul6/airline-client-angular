@@ -9,6 +9,7 @@ import { CheckInComponent } from "./check-in/check-in.component";
 import { InFlightComponent } from "./in-flight/in-flight.component";
 import { environment } from "src/environments/environment";
 import { SharedModule } from "../shared/shared.module";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [FlightComponent, CheckInComponent, InFlightComponent],
@@ -19,7 +20,8 @@ import { SharedModule } from "../shared/shared.module";
       developmentMode: !environment.production
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    FlightRoutingModule
+    FlightRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [FlightComponent]
 })

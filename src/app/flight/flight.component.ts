@@ -27,6 +27,7 @@ export class FlightComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.flightList = this.store.selectSnapshot(FlightState.GetFlightLists);
+
     if (!this.flightList.length) {
       this.serviceCall();
     }
@@ -52,6 +53,10 @@ export class FlightComponent implements OnInit, OnDestroy {
 
   getImageSource(flightName: string): string {
     return `../../assets/images/${flightName}.png`;
+  }
+
+  handleNavigation(id, desc) {
+    this.router.navigate(["flights/" + id + "/" + desc]);
   }
 
   ngOnDestroy(): void {
