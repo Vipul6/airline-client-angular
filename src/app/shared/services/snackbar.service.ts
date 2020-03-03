@@ -8,7 +8,9 @@ export class SnackbarService {
   constructor(private snackBar: MatSnackBar) {}
 
   public openSnackBar(message: string, status: string): void {
-    this.snackBar.open(message, "", {
+    const content =
+      status === "success-status" ? "✅ " + message : "⚠️ " + message;
+    this.snackBar.open(content, "", {
       duration: 3000,
       panelClass: [status],
       verticalPosition: "top",

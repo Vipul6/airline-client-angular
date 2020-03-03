@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { FlightService } from "src/app/flight/service/flight.service";
 
 @Component({
   selector: "app-header",
@@ -7,7 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router) {
+  constructor(private router: Router, private flightService: FlightService) {
     const url: string = window.location.href;
     this.activeLink = "";
 
@@ -19,8 +20,33 @@ export class HeaderComponent implements OnInit {
   }
 
   activeLink: string;
+  isLoggedIn: boolean;
+  showRole: boolean;
+  role = "staff";
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isLoggedIn = !sessionStorage.id ? true : false;
+  }
+
+  getImageSrc(): string {
+    let returnValue = "";
+    if (this.role === "admin") {
+      returnValue = `../../../assets/images/admin-icon.png`;
+    } else {
+      returnValue = `../../../assets/images/staff-icon.png`;
+    }
+    return returnValue;
+  }
+
+  showRoles(): void {
+    this.showRole = !this.showRole;
+  }
+
+  updateRole(role: string): void {
+    this.role = role;
+    this.showRole = false;
+    this.flightService.role.next(role);
+  }
 
   handleNavigation(location: string): void {
     this.router.navigate([`/${location}`]);

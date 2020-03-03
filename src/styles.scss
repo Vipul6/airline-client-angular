@@ -13,6 +13,8 @@ body {
 }
 
 .failure-status {
+  display: flex;
+  align-items: center;
   background-color: $red-alert;
   font-weight: bold;
   color: $white-font-color;
@@ -34,3 +36,6 @@ body {
   color: #e4566d;
   margin-left: 7px !important;
 }
+
+@import "./app/shared/styles/input.scss";
+@import "./app/shared/styles/label.scss";

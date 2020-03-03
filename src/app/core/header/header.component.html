@@ -29,5 +29,50 @@
         <span [ngClass]="activeLink === 'about' ? 'active-bar' : ''"></span>
       </a>
     </nav>
+    <div class="roles-container">
+      <div
+        *ngIf="isLoggedIn"
+        appClickOutside
+        (appClickOutside)="showRole = false"
+      >
+        <img
+          [src]="getImageSrc()"
+          alt="role"
+          class="roles-img"
+          (click)="showRoles()"
+        />
+
+        <div *ngIf="showRole">
+          <div class="role-wrapper-container">
+            <div class="role-wrapper">
+              <div class="role-options">
+                <span
+                  [ngClass]="role === 'staff' ? 'role active' : 'role'"
+                  (click)="updateRole('staff')"
+                >
+                  Staff
+                </span>
+                <span
+                  [ngClass]="role === 'admin' ? 'role active' : 'role'"
+                  (click)="updateRole('admin')"
+                >
+                  Admin
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!isLoggedIn">
+        <button class="login-button">
+          <img
+            class="google-logo"
+            alt="google-logo"
+            src="../../../assets/images/google-logo.png"
+          />
+          <span class="google-logo-text">Sign in</span>
+        </button>
+      </div>
+    </div>
   </div>
 </header>

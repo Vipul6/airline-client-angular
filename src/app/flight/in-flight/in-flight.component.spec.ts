@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { InFlightComponent } from './in-flight.component';
+import { InFlightComponent } from "./in-flight.component";
 
-describe('InFlightComponent', () => {
+describe("InFlightComponent", () => {
   let component: InFlightComponent;
   let fixture: ComponentFixture<InFlightComponent>;
 
@@ -19,7 +19,7 @@ describe('InFlightComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

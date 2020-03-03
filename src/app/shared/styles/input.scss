@@ -1,0 +1,146 @@
+$red-color: #ff0000;
+$gray-color: #bdbcbc;
+$box-shadow-color: #61dafb;
+
+.mat-form-field {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 20px;
+  width: 100%;
+
+  &.textarea {
+    .mat-form-field-flex {
+      padding: 0 2px;
+    }
+    .mat-form-field-infix {
+      padding: 4px 0;
+    }
+    textarea.mat-input-element {
+      padding: 6px 8px;
+    }
+  }
+
+  &.mat-form-field-disabled {
+    .mat-form-field-flex {
+      color: $gray-color;
+      background: $gray-color;
+      border-radius: 4px;
+      .mat-form-field-outline-end,
+      .mat-form-field-outline-start {
+        border-color: $gray-color;
+      }
+    }
+
+    * {
+      cursor: not-allowed;
+    }
+  }
+
+  &.mat-form-field-invalid {
+    .mat-form-field-outline-thick > div {
+      border-color: $red-color;
+    }
+    .mat-form-field-infix {
+      color: $red-color;
+    }
+  }
+
+  .mat-form-field-suffix {
+    top: 0;
+  }
+
+  .mat-form-field-wrapper {
+    margin: 0;
+    padding: 0;
+  }
+
+  .mat-form-field-subscript-wrapper {
+    padding: 0;
+    margin: 0;
+    position: static;
+
+    .mat-hint,
+    .mat-error {
+      margin-top: 5px;
+    }
+  }
+
+  .mat-form-field-label-wrapper {
+    padding: 0;
+  }
+
+  .mat-form-field-infix {
+    border: none;
+    padding: 12px 0;
+    .mat-input-element {
+      caret-color: black;
+    }
+  }
+
+  .mat-form-field-outline {
+    top: 0;
+  }
+
+  &.mat-focused {
+    .mat-form-field-outline-thick {
+      box-shadow: 0 0 2px 3px $box-shadow-color;
+      border-radius: 4px;
+      > div {
+        border-color: $gray-color;
+        border-width: 2px;
+      }
+    }
+  }
+
+  .mat-form-field-flex {
+    margin-top: 0;
+    padding: 0 10px;
+
+    .mat-form-field-outline-end,
+    .mat-form-field-outline-start {
+      border-color: $gray-color;
+    }
+
+    .mat-form-field-outline-start {
+      border-radius: 4px 0 0 4px;
+    }
+
+    .mat-form-field-outline-end {
+      border-radius: 0 4px 4px 0;
+    }
+
+    .mat-form-field-outline-gap {
+      border-radius: 4px;
+    }
+
+    .mat-form-field-outline-thick {
+      opacity: 1;
+
+      > div {
+        border-width: 1px;
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      .mat-form-field-outline-thick {
+        opacity: 1;
+
+        > div {
+          border-color: $gray-color;
+        }
+      }
+    }
+  }
+}
+
+.mat-error {
+  font-size: 12px;
+  color: $red-color;
+  font-weight: 400;
+}
+
+.mat-select-arrow-wrapper {
+  display: flex !important;
+}

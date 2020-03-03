@@ -1,0 +1,345 @@
+<div class="passenger-wrapper" *ngIf="flightList.length">
+  <span class="title">Passengers list</span>
+
+  <div class="filter-container">
+    <mat-accordion>
+      <mat-expansion-panel class="panel">
+        <mat-expansion-panel-header>
+          <img src="../../../assets/svg/filter-list.svg" />
+          <span class="filter-title">Filters</span>
+        </mat-expansion-panel-header>
+        <div class="filter-content">
+          <mat-checkbox
+            color="warn"
+            (change)="updateCheckbox($event, 'passportNumber')"
+            >Passport</mat-checkbox
+          >
+          <mat-checkbox
+            color="warn"
+            (change)="updateCheckbox($event, 'address')"
+            >Address</mat-checkbox
+          >
+          <mat-checkbox
+            color="warn"
+            (change)="updateCheckbox($event, 'dateOfBirth')"
+            >Date of birth</mat-checkbox
+          >
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div>
+    <div
+      *ngFor="
+        let user of filteredFlightData[flightIndex]?.passengersDetail;
+        let i = index
+      "
+    >
+      <div class="passenger-content">
+        <span class="index"> {{ i + 1 }}. </span>
+        <span class="name" (click)="openUserDialog(i)">{{ user.name }}</span>
+        <span class="seat-number" *ngIf="user.seatNumber">{{
+          user.seatNumber
+        }}</span>
+        <span class="services">{{ user.ancilliaryServices.join(", ") }}</span>
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <button mat-button class="secondary-btn" (click)="openDialog()">
+        Add passenger
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #addPassenger>
+  <div class="dialog-wrapper">
+    <div class="dialog-content">
+      <form [formGroup]="passengerForm">
+        <div>
+          <mat-label>Name</mat-label>
+          <mat-form-field>
+            <input matInput type="text" formControlName="name" />
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-label>Address</mat-label>
+          <mat-form-field>
+            <input matInput type="text" formControlName="address" />
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-label>Passport</mat-label>
+          <mat-form-field>
+            <input matInput type="text" formControlName="passportNumber" />
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-label>Seat number</mat-label>
+          <mat-form-field>
+            <mat-select formControlName="seatNumber">
+              <div *ngFor="let data of flightList[flightIndex]?.seatsDetail">
+                <mat-option *ngIf="isSeatsFull()" disabled
+                  >No seats available</mat-option
+                >
+                <mat-option *ngIf="!data.isOccupied" [value]="data.number"
+                  ><span>{{ data.number }}</span></mat-option
+                >
+              </div>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-label>Date of birth</mat-label>
+          <mat-form-field>
+            <input matInput type="text" formControlName="dateOfBirth" />
+          </mat-form-field>
+        </div>
+
+        <div class="radio-input-control">
+          <mat-label>Infant status</mat-label>
+          <mat-radio-group formControlName="hasInfant">
+            <mat-radio-button value="true">True</mat-radio-button>
+            <mat-radio-button value="false" class="space"
+              >False</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+
+        <div class="radio-input-control">
+          <mat-label>Check-in status</mat-label>
+          <mat-radio-group formControlName="isCheckedIn">
+            <mat-radio-button value="false">Check-in</mat-radio-button>
+            <mat-radio-button value="true" class="space"
+              >Checked-in</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+
+        <div class="radio-input-control">
+          <mat-label>Wheel chair</mat-label>
+          <mat-radio-group formControlName="isWheelChairRequired">
+            <mat-radio-button value="true">True</mat-radio-button>
+            <mat-radio-button value="false" class="space"
+              >False</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+
+        <div>
+          <mat-label>Ancilliary services</mat-label>
+          <div class="checkbox-input-control">
+            <div
+              *ngFor="let data of flightList[flightIndex]?.ancilliaryServices"
+            >
+              <mat-checkbox
+                [value]="data"
+                (change)="
+                  handleCheckboxChange($event, 'ancilliaryServices', data)
+                "
+                class="space"
+                >{{ data }}</mat-checkbox
+              >
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <mat-label>Shopping items</mat-label>
+          <div class="checkbox-input-control">
+            <div *ngFor="let data of flightList[flightIndex]?.shoppingItems">
+              <mat-checkbox
+                [value]="data"
+                (change)="handleCheckboxChange($event, 'shoppingItems', data)"
+                class="space"
+                >{{ data }}</mat-checkbox
+              >
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <mat-label>Meals</mat-label>
+          <div class="checkbox-input-control">
+            <div *ngFor="let data of flightList[flightIndex]?.meals">
+              <mat-checkbox
+                [value]="data"
+                (change)="handleCheckboxChange($event, 'meals', data)"
+                class="space"
+                >{{ data }}</mat-checkbox
+              >
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="action-container">
+      <button
+        mat-button
+        (click)="closeDialog()"
+        type="button"
+        class="primary-btn"
+      >
+        Cancel
+      </button>
+      <button mat-button class="secondary-btn" (click)="handleFormSubmit()">
+        Submit
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #updatePassenger>
+  <div class="dialog-wrapper" *ngIf="initialView">
+    <div class="dialog-content">
+      <div class="user-container">
+        <div class="user-detail">
+          <span class="label">Name: </span>
+          <span class="label-value">
+            {{
+              this.filteredFlightData[this.flightIndex].passengersDetail[
+                this.updatePassengerIndex
+              ].name
+            }}
+          </span>
+        </div>
+
+        <div class="user-operation">
+          <button
+            mat-button
+            class="secondary-btn"
+            (click)="updateUserDetail('name')"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+
+      <div class="user-container">
+        <div class="user-detail">
+          <span class="label">Address: </span>
+          <span class="label-value">
+            {{
+              this.filteredFlightData[this.flightIndex].passengersDetail[
+                this.updatePassengerIndex
+              ].address
+            }}
+          </span>
+        </div>
+
+        <div class="user-operation">
+          <button
+            mat-button
+            class="secondary-btn"
+            (click)="updateUserDetail('address')"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+
+      <div class="user-container">
+        <div class="user-detail">
+          <span class="label">Passport: </span>
+          <span class="label-value">
+            {{
+              this.filteredFlightData[this.flightIndex].passengersDetail[
+                this.updatePassengerIndex
+              ].passportNumber
+            }}
+          </span>
+        </div>
+
+        <div class="user-operation">
+          <button
+            mat-button
+            class="secondary-btn"
+            (click)="updateUserDetail('passportNumber')"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+
+      <div class="user-container">
+        <div class="user-detail">
+          <span class="label">Date of birth: </span>
+          <span class="label-value">
+            {{
+              this.filteredFlightData[this.flightIndex].passengersDetail[
+                this.updatePassengerIndex
+              ].dateOfBirth
+            }}
+          </span>
+        </div>
+
+        <div class="user-operation">
+          <button
+            mat-button
+            class="secondary-btn"
+            (click)="updateUserDetail('dateOfBirth')"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="action-container">
+      <button
+        mat-button
+        (click)="closeDialog()"
+        type="button"
+        class="primary-btn"
+      >
+        Cancel
+      </button>
+      <button mat-button class="secondary-btn">
+        Submit
+      </button>
+    </div>
+  </div>
+
+  <div class="dialog-wrapper-view" *ngIf="!initialView">
+    <div class="content-wrapper">
+      <form [formGroup]="userDetailForm">
+        <mat-form-field>
+          <input matInput formControlName="detail" />
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="btn-action-container">
+      <div class="back-btn">
+        <button
+          mat-button
+          class="secondary-btn"
+          (click)="initialView = !initialView"
+        >
+          Back
+        </button>
+      </div>
+      <div class="action-btn">
+        <button
+          mat-button
+          (click)="closeDialog()"
+          type="button"
+          class="primary-btn"
+        >
+          Cancel
+        </button>
+        <button
+          mat-button
+          class="secondary-btn"
+          (click)="handleUserUpdateSubmit()"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

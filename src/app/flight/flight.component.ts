@@ -15,6 +15,11 @@ import { FlightState } from "./+state/flight.state";
   styleUrls: ["./flight.component.scss"]
 })
 export class FlightComponent implements OnInit, OnDestroy {
+  private unsubscribe$ = new Subject();
+  flightList: Flight[] = [];
+  showSpinner: boolean;
+  role: string;
+
   constructor(
     private store: Store,
     private router: Router,
@@ -22,10 +27,8 @@ export class FlightComponent implements OnInit, OnDestroy {
     private snackbarService: SnackbarService
   ) {}
 
-  private unsubscribe$ = new Subject();
-  flightList: Flight[] = [];
-
   ngOnInit(): void {
+    this.udpateRole();
     this.flightList = this.store.selectSnapshot(FlightState.GetFlightLists);
 
     if (!this.flightList.length) {
@@ -33,7 +36,16 @@ export class FlightComponent implements OnInit, OnDestroy {
     }
   }
 
+  udpateRole(): void {
+    this.flightService.role
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(res => {
+        this.role = res;
+      });
+  }
+
   serviceCall(): void {
+    this.showSpinner = true;
     this.flightService
       .getFlights()
       .pipe(takeUntil(this.unsubscribe$))
@@ -41,8 +53,10 @@ export class FlightComponent implements OnInit, OnDestroy {
         res => {
           this.store.dispatch(new SetFlight(res));
           this.flightList = res;
+          this.showSpinner = false;
         },
         error => {
+          this.showSpinner = false;
           this.snackbarService.openSnackBar(
             "Something went wrong please try again after some time.",
             "failure-status"
@@ -55,8 +69,8 @@ export class FlightComponent implements OnInit, OnDestroy {
     return `../../assets/images/${flightName}.png`;
   }
 
-  handleNavigation(id, desc) {
-    this.router.navigate(["flights/" + id + "/" + desc]);
+  handleNavigation(flightId: number, dest: string): void {
+    this.router.navigate([`flights/${flightId}/${dest}`]);
   }
 
   ngOnDestroy(): void {

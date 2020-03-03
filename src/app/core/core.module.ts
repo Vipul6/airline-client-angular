@@ -4,6 +4,7 @@ import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { AboutComponent } from "./about/about.component";
     HomeComponent,
     AboutComponent
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, SharedModule],
   exports: [HeaderComponent, FooterComponent]
 })
 export class CoreModule {}

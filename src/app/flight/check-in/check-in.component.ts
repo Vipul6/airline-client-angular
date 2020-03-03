@@ -1,10 +1,15 @@
 import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Store } from "@ngxs/store";
+import { Store, Select } from "@ngxs/store";
 import { FlightState } from "../+state/flight.state";
 import { Flight, SeatDetail, PassengerDetail } from "../service/flight.model";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
+import { FlightService } from "../service/flight.service";
+import { Observable, Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
+import { UpdateFlight } from "../+state/flight.action";
+import { SnackbarService } from "src/app/shared/services/snackbar.service";
 
 @Component({
   selector: "app-check-in",
@@ -12,6 +17,7 @@ import { MatDialog } from "@angular/material/dialog";
   styleUrls: ["./check-in.component.scss"]
 })
 export class CheckInComponent implements OnInit, OnDestroy {
+  @Select(FlightState.GetFlightLists) flights$: Observable<Flight[]>;
   @ViewChild("seatNumberChangeModal") seatNumberChangeModal;
   @ViewChild("checkedInModal") checkedInModal;
   flightDetails: Flight[] = [];
@@ -25,23 +31,29 @@ export class CheckInComponent implements OnInit, OnDestroy {
   checkedInform: FormGroup;
   passengerId: number;
   flightId: number;
+  private unsubscribe$ = new Subject();
 
   constructor(
     private store: Store,
     private router: Router,
     private route: ActivatedRoute,
     public fb: FormBuilder,
+    private flightService: FlightService,
+    private snacbarService: SnackbarService,
     public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    const flightList = this.store.selectSnapshot(FlightState.GetFlightLists);
     this.flightId = parseInt(this.route.snapshot.params["flightId"], 10);
-    this.flightDetails = flightList.filter(
-      item => item["id"] === this.flightId
-    );
-    this.seatsDetails = this.flightDetails[0].seatsDetail;
-    this.passengersDetailsList = this.flightDetails[0].passengersDetail;
+    this.flights$.pipe(takeUntil(this.unsubscribe$)).subscribe(res => {
+      this.flightDetails = res;
+
+      this.flightDetails = this.flightDetails.filter(
+        item => item["id"] === this.flightId
+      );
+      this.seatsDetails = this.flightDetails[0].seatsDetail;
+      this.passengersDetailsList = this.flightDetails[0].passengersDetail;
+    });
   }
 
   openCloseModal(type?, id?) {
@@ -98,20 +110,15 @@ export class CheckInComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log("===>Submit");
-
     const flightList = JSON.parse(JSON.stringify(this.flightDetails));
-    const flightIndex = this.flightDetails.findIndex(item => {
-      return item.id === this.flightId;
-    });
     const passengerIndex = this.passengersDetailsList.findIndex(item => {
       return item.id === this.passengerId;
     });
     const prevSeatIndex = this.seatsDetails.findIndex(item => {
       return (
-        flightList[flightIndex].passengersDetail[passengerIndex].seatNumber &&
+        flightList[0].passengersDetail[passengerIndex].seatNumber &&
         item.number ===
-          flightList[flightIndex].passengersDetail[passengerIndex].seatNumber
+          flightList[0].passengersDetail[passengerIndex].seatNumber
       );
     });
 
@@ -120,38 +127,72 @@ export class CheckInComponent implements OnInit, OnDestroy {
     });
 
     if (prevSeatIndex) {
-      flightList[flightIndex].seatsDetail[prevSeatIndex].isOccupied = false;
-      flightList[flightIndex].seatsDetail[prevSeatIndex].passengerId = null;
+      flightList[0].seatsDetail[prevSeatIndex].isOccupied = false;
+      flightList[0].seatsDetail[prevSeatIndex].passengerId = null;
     }
 
-    flightList[flightIndex].passengersDetail[
+    flightList[0].passengersDetail[
       passengerIndex
     ].seatNumber = this.seatSelection.controls["seatNumber"].value;
-    flightList[flightIndex].passengersDetail[
-      passengerIndex
-    ].isCheckedIn = false;
-    flightList[flightIndex].seatsDetail[newSeatIndex].isOccupied = true;
-    flightList[flightIndex].seatsDetail[
-      newSeatIndex
-    ].passengerId = this.passengerId;
+    flightList[0].passengersDetail[passengerIndex].isCheckedIn = false;
+    flightList[0].seatsDetail[newSeatIndex].isOccupied = true;
+    flightList[0].seatsDetail[newSeatIndex].passengerId = this.passengerId;
+
+    this.flightService
+      .updateFlight(this.flightId, flightList[0])
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(
+        res => {
+          this.store.dispatch(new UpdateFlight(this.flightId, flightList[0]));
+          this.snacbarService.openSnackBar(
+            "Passenger seat number updated.",
+            "success-status"
+          );
+        },
+        error => {
+          console.log(error);
+          this.snacbarService.openSnackBar(
+            "Something went wrong please try again after some time.",
+            "failure-status"
+          );
+        }
+      );
 
     this.openCloseModal();
   }
 
   onCheckedInStatusSubmit() {
     const flightList = JSON.parse(JSON.stringify(this.flightDetails));
-    const flightIndex = this.flightDetails.findIndex(item => {
-      return item.id === this.flightId;
-    });
     const passengerIndex = this.passengersDetailsList.findIndex(item => {
       return item.id === this.passengerId;
     });
-    flightList[flightIndex].passengersDetail[passengerIndex].isCheckedIn =
+    flightList[0].passengersDetail[passengerIndex].isCheckedIn =
       this.checkedInform.controls["isCheckedIn"].value === "true";
 
-    console.log(flightList);
+    this.flightService
+      .updateFlight(this.flightId, flightList[0])
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(
+        res => {
+          this.store.dispatch(new UpdateFlight(this.flightId, flightList[0]));
+          this.snacbarService.openSnackBar(
+            "Passenger check-in status updated.",
+            "success-status"
+          );
+        },
+        error => {
+          this.snacbarService.openSnackBar(
+            "Something went wrong please try again after some time.",
+            "failure-status"
+          );
+          console.log(error);
+        }
+      );
     this.openCloseModal();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 }
