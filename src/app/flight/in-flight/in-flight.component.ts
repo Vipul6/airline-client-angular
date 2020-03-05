@@ -6,10 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./in-flight.component.scss"]
 })
 export class InFlightComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

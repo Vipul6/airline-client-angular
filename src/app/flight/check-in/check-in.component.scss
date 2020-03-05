@@ -1,0 +1,137 @@
+$name-bgcolor: #d5eeff;
+$name-hover-bgcolor: #bfe4ff;
+$occupied-color: #ffffff;
+$vacant-color: #000000;
+$grid-occupied-bgcolor: #f19696;
+$grid-vacant-bgcolor: #7fc5ee;
+$border-color: #3366cc;
+$seat-bgcolor: #ffff00;
+$box-shadow: #00000033;
+
+.card-content {
+  padding: 25px;
+  box-shadow: 0 1px 8px 0 $box-shadow;
+  margin-bottom: 20px;
+  justify-content: center;
+
+  .top-view {
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: #260563;
+    font-size: 20px;
+    justify-content: center;
+  }
+
+  .row-view {
+    flex: 1 1;
+    display: flex;
+    justify-content: space-between;
+    .left-view {
+      justify-content: flex-start;
+    }
+
+    .right-view {
+      justify-content: flex-end;
+    }
+  }
+
+  .left-view,
+  .right-view {
+    .flight-content-detail {
+      display: flex;
+      padding: 5px;
+    }
+  }
+}
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 450px;
+    justify-content: center;
+
+    .seat-details-header {
+      width: 100%;
+      text-align: center;
+    }
+
+    .grid-item {
+      justify-content: center;
+      width: 55px;
+      height: 55px;
+      border-radius: 10px;
+      border: 3px solid #36c;
+      margin: 4px;
+
+      .occupied-seat {
+        color: $occupied-color;
+        background: $grid-occupied-bgcolor;
+        cursor: pointer;
+      }
+
+      .vacant-seat {
+        color: $vacant-color;
+        background: $grid-vacant-bgcolor;
+      }
+
+      .occupied-seat,
+      .vacant-seat {
+        height: 35px;
+        width: 35px;
+        display: flex;
+        justify-content: space-between;
+        margin: 10px;
+        font-weight: bold;
+        border-radius: 5px;
+        align-items: center;
+
+        .seat-details {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .passenger-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 450px;
+
+    .passenger-details-header {
+      width: 100%;
+      text-align: center;
+    }
+    .row {
+      font-size: 20px;
+      flex-direction: column;
+      align-content: start;
+
+      .name {
+        background-color: $name-bgcolor;
+        margin: 2px;
+        cursor: pointer;
+      }
+
+      .seat {
+        background-color: $seat-bgcolor;
+        margin: 2px;
+      }
+    }
+  }
+}
+
+.modal {
+  width: 300px;
+  .modal-dropdown {
+    width: 100px;
+    height: 30px;
+  }
+}

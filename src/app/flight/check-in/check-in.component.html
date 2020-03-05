@@ -1,1 +1,128 @@
-<p>check-in works!</p>
+<div class="card-content">
+  <div class="top-view">
+    <span>{{ flightDetails[0].name }}</span>
+  </div>
+  <div class="row-view">
+    <div class="left-view">
+      <div class="flight-content-detail">
+        <span><b>From: </b></span>
+        <span>{{ flightDetails[0].source }}</span>
+      </div>
+    </div>
+    <div class="right-view">
+      <div class="flight-content-detail">
+        <span><b>To: </b></span>
+        <span>{{ flightDetails[0].destination }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-view">
+    <div class="left-view">
+      <div class="flight-content-detail">
+        <span><b>Departure Time: </b></span>
+        <span>{{ flightDetails[0].departureTime }}</span>
+      </div>
+    </div>
+    <div class="right-view">
+      <div class="flight-content-detail">
+        <span><b>Arrival Time: </b></span>
+        <span>{{ flightDetails[0].arrivalTime }}</span>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="left-view">
+      <div class="flight-content-detail">
+        <span><b>Departure Time: </b></span>
+        <span>{{ flightDetails[0].departureTime }}</span>
+      </div>
+    </div> -->
+</div>
+<div class="container">
+  <div class="grid-container">
+    <h3 class="seat-details-header">Seat Details</h3>
+    <div *ngFor="let item of seatsDetails; let i = index">
+      <div class="grid-item">
+        <div
+          [ngClass]="item.isOccupied === true ? 'occupied-seat' : 'vacant-seat'"
+        >
+          <div
+            class="seat-details"
+            (click)="
+              item.isOccupied === true &&
+                openCloseModal('checkedinModal', item.number)
+            "
+          >
+            <span>{{ item.number }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="passenger-list">
+    <h3 class="passenger-details-header">Passengers</h3>
+    <div *ngFor="let passengersDetail of passengersDetailsList; let i = index">
+      <div class="row">
+        <span
+          class="name"
+          (click)="openCloseModal('seatChange', passengersDetail.id)"
+          >{{ passengersDetail.name }}</span
+        >
+        <span class="seat">{{ passengersDetail.seatNumber }}</span>
+        <span>{{ passengersDetail.ancilliaryServices }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #seatNumberChangeModal>
+  <div class="modal">
+    <h2 mat-dialog-title>Change seat</h2>
+    <form [formGroup]="seatSelection" (ngSubmit)="onSubmit()">
+      <select
+        formControlName="seatNumber"
+        (change)="onChangeSeatNumber()"
+        class="modal-dropdown"
+      >
+        <option>Choose one seat</option>
+        <option *ngFor="let seat of availableSeatsDetails">{{
+          seat.number
+        }}</option>
+      </select>
+      <div mat-dialog-actions>
+        <button type="button" (click)="openCloseModal()">Cancel</button>
+        <button type="submit" [disabled]="!submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #checkedInModal>
+  <div class="modal">
+    <h2 mat-dialog-title>Update Checked-in Status</h2>
+    <div>
+      <span>Occupied By: </span>
+      <span>{{ passengersDetails.name }}</span>
+    </div>
+    <form [formGroup]="checkedInform" (ngSubmit)="onCheckedInStatusSubmit()">
+      <input
+        type="radio"
+        value="false"
+        formControlName="isCheckedIn"
+        (change)="onChangeCheckedInStatus()"
+      />
+      <label>Check-in</label>
+      <input
+        type="radio"
+        value="true"
+        formControlName="isCheckedIn"
+        (change)="onChangeCheckedInStatus()"
+      />
+      <label>Checked-in</label>
+      <div mat-dialog-actions>
+        <button type="button" (click)="openCloseModal()">Cancel</button>
+        <button type="submit" [disabled]="!submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

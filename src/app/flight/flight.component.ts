@@ -30,6 +30,7 @@ export class FlightComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.udpateRole();
     this.flightList = this.store.selectSnapshot(FlightState.GetFlightLists);
+
     if (!this.flightList.length) {
       this.serviceCall();
     }
