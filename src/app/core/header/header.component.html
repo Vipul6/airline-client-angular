@@ -1,6 +1,6 @@
 <header class="nav-container">
   <div class="navbar">
-    <div class="logo-container">
+    <div class="logo-container" (click)="handleNavigation('')">
       <img
         src="../../../assets/images/flight-logo.png"
         alt="logo"
@@ -58,19 +58,18 @@
                 >
                   Admin
                 </span>
+
+                <span (click)="logout()" class="role">
+                  Logout
+                </span>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div *ngIf="!isLoggedIn">
-        <button class="login-button">
-          <img
-            class="google-logo"
-            alt="google-logo"
-            src="../../../assets/images/google-logo.png"
-          />
-          <span class="google-logo-text">Sign in</span>
+        <button class="login-button" (click)="login()">
+          <span class="logo-text">Log in</span>
         </button>
       </div>
     </div>

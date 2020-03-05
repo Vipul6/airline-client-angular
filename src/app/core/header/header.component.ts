@@ -1,14 +1,31 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { FlightService } from "src/app/flight/service/flight.service";
+import { Select, Store } from "@ngxs/store";
+import { LoginState } from "../+state/login.state";
+import { Observable, Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
+import { SetUser } from "../+state/login.action";
 
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"]
 })
-export class HeaderComponent implements OnInit {
-  constructor(private router: Router, private flightService: FlightService) {
+export class HeaderComponent implements OnInit, OnDestroy {
+  activeLink: string;
+  isLoggedIn: boolean;
+  showRole: boolean;
+  role = "staff";
+
+  private unsubscribe$ = new Subject();
+  @Select(LoginState.GetUser) user$: Observable<string>;
+
+  constructor(
+    private router: Router,
+    private flightService: FlightService,
+    private store: Store
+  ) {
     const url: string = window.location.href;
     this.activeLink = "";
 
@@ -16,16 +33,25 @@ export class HeaderComponent implements OnInit {
       this.activeLink = "flights";
     } else if (url.includes("about")) {
       this.activeLink = "about";
+    } else if (url.includes("login")) {
+      this.activeLink = "login";
     }
   }
 
-  activeLink: string;
-  isLoggedIn: boolean;
-  showRole: boolean;
-  role = "staff";
-
   ngOnInit(): void {
-    this.isLoggedIn = !sessionStorage.id ? true : false;
+    this.user$.pipe(takeUntil(this.unsubscribe$)).subscribe(res => {
+      if (res) {
+        this.isLoggedIn = true;
+        this.router.navigate(["/"]);
+        this.activeLink = "";
+      } else {
+        this.isLoggedIn = false;
+      }
+    });
+
+    if (sessionStorage.username && !this.isLoggedIn) {
+      this.store.dispatch(new SetUser(sessionStorage.username));
+    }
   }
 
   getImageSrc(): string {
@@ -51,5 +77,21 @@ export class HeaderComponent implements OnInit {
   handleNavigation(location: string): void {
     this.router.navigate([`/${location}`]);
     this.activeLink = location;
+  }
+
+  login(): void {
+    this.router.navigate([`/login`]);
+    this.activeLink = "login";
+  }
+
+  logout(): void {
+    sessionStorage.clear();
+    this.showRole = false;
+    this.store.dispatch(new SetUser(null));
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

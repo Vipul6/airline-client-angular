@@ -1,0 +1,29 @@
+<div class="container">
+  <mat-card>
+    <div class="welcome-content">
+      <h2>Welcome back!</h2>
+      <h3>We're so excited to see you again!</h3>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+      <div class="text-fields">
+        <div>
+          <mat-label>USERNAME</mat-label>
+          <mat-form-field>
+            <input matInput type="text" formControlName="username" />
+            <mat-error>Required field</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-label>PASSWORD</mat-label>
+          <mat-form-field>
+            <input matInput type="password" formControlName="password" />
+            <mat-error>Required field</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="login-btn">
+        <button mat-raised-button type="submit">Log in</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

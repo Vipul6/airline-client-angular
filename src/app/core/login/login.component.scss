@@ -1,0 +1,42 @@
+.container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 940px;
+  background-image: url("../../../assets/images/background.jpg");
+
+  input {
+    color: rgb(198, 199, 201);
+  }
+
+  .mat-card {
+    width: 450px;
+    background: rgb(54, 57, 63);
+
+    mat-label {
+      color: rgb(135, 139, 144);
+    }
+
+    .login-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      button {
+        background: rgb(114, 137, 218);
+        color: white;
+        width: 90%;
+        height: 100%;
+      }
+    }
+  }
+
+  .welcome-content {
+    text-align: center;
+    color: rgb(234, 234, 235);
+    h2,
+    h3 {
+      font-weight: 100;
+    }
+  }
+}

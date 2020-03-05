@@ -21,6 +21,8 @@ body {
 }
 
 .success-status {
+  display: flex;
+  align-items: center;
   background-color: $green-alert;
   font-weight: bold;
   color: $white-font-color;
