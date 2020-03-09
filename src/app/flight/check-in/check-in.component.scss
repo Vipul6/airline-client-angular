@@ -135,3 +135,30 @@ $box-shadow: #00000033;
     height: 30px;
   }
 }
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+
+  .filter-title {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+
+  .panel {
+    width: 300px;
+
+    .accordion {
+      height: 40px !important;
+    }
+
+    .filter-content {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 5px;
+    }
+  }
+}

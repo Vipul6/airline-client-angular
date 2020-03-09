@@ -12,7 +12,7 @@
         {
           "id": 1,
           "number": "1A",
-          "isOccupied": true,
+          "isOccupied": false,
           "passengerId": 2
         },
         {
@@ -30,8 +30,8 @@
         {
           "id": 4,
           "number": "1D",
-          "isOccupied": true,
-          "passengerId": 1
+          "isOccupied": false,
+          "passengerId": null
         },
         {
           "id": 5,
@@ -120,8 +120,8 @@
         {
           "id": 19,
           "number": "4A",
-          "isOccupied": false,
-          "passengerId": null
+          "isOccupied": true,
+          "passengerId": 1
         },
         {
           "id": 20,
@@ -138,8 +138,8 @@
         {
           "id": 22,
           "number": "4D",
-          "isOccupied": false,
-          "passengerId": null
+          "isOccupied": true,
+          "passengerId": 2
         },
         {
           "id": 23,
@@ -156,51 +156,83 @@
       ],
       "passengersDetail": [
         {
-          "ancilliaryServices": ["Cold-drinks", "Movie", "Snacks"],
-          "meals": ["Chinese", "French", "Non-veg", "Veg"],
-          "shoppingItems": ["Jewellery"],
+          "ancilliaryServices": [
+            "Cold-drinks",
+            "Movie"
+          ],
+          "meals": [
+            "Chinese",
+            "French",
+            "Non-veg",
+            "Veg"
+          ],
+          "shoppingItems": [
+            "Jewellery"
+          ],
           "id": 1,
           "name": "Arush Mehta",
           "dateOfBirth": "20/11/1998",
-          "seatNumber": "1D",
-          "isCheckedIn": true,
+          "seatNumber": "4A",
+          "isCheckedIn": false,
           "hasInfant": false,
           "isWheelChairRequired": false,
           "passportNumber": "5432167",
           "address": "Ranchi, Jharkhand"
         },
         {
-          "ancilliaryServices": ["Cold-drinks", "Snacks", "Movie"],
-          "meals": ["Non-veg", "French", "Chinese", "Veg"],
-          "shoppingItems": ["Jewellery"],
+          "ancilliaryServices": [
+            "Movie",
+            "Cold-drinks"
+          ],
+          "meals": [
+            "Veg",
+            "Chinese",
+            "French"
+          ],
+          "shoppingItems": [
+            "Jewellery"
+          ],
           "id": 2,
           "name": "Ayushi Mehta",
           "dateOfBirth": "20/11/1998",
-          "seatNumber": "1A",
-          "isCheckedIn": true,
+          "seatNumber": "4D",
+          "isCheckedIn": false,
           "hasInfant": true,
           "isWheelChairRequired": false,
           "passportNumber": "5432167",
           "address": "Ranchi, Jharkhand"
         },
         {
-          "ancilliaryServices": ["Cold-drinks", "Snacks"],
-          "meals": ["Chinese"],
+          "ancilliaryServices": [
+            "Movie",
+            "Snacks",
+            "Cold-drinks"
+          ],
+          "meals": [
+            "Chinese"
+          ],
           "shoppingItems": [],
           "id": 3,
           "name": "Rahul Mehta",
           "dateOfBirth": "20/11/1997",
           "seatNumber": "2A",
-          "isCheckedIn": false,
+          "isCheckedIn": true,
           "hasInfant": false,
           "isWheelChairRequired": false,
           "passportNumber": "92189",
           "address": "Kangra"
         },
         {
-          "ancilliaryServices": ["Movie", "Snacks", "Cold-drinks"],
-          "meals": ["Veg"],
-          "shoppingItems": [],
+          "ancilliaryServices": [
+            "Movie",
+            "Cold-drinks"
+          ],
+          "meals": [
+            "Veg"
+          ],
+          "shoppingItems": [
+            "Jewellery"
+          ],
           "id": 4,
           "name": "test",
           "dateOfBirth": "08/09/1222",
@@ -212,9 +244,20 @@
           "address": "test"
         }
       ],
-      "shoppingItems": ["Jewellery"],
-      "ancilliaryServices": ["Movie", "Snacks", "Cold-drinks"],
-      "meals": ["Veg", "Non-veg", "Chinese", "French"]
+      "shoppingItems": [
+        "Jewellery"
+      ],
+      "ancilliaryServices": [
+        "Movie",
+        "Snacks",
+        "Cold-drinks"
+      ],
+      "meals": [
+        "Veg",
+        "Non-veg",
+        "Chinese",
+        "French"
+      ]
     },
     {
       "id": 2,
@@ -372,9 +415,16 @@
       ],
       "passengersDetail": [
         {
-          "ancilliaryServices": ["Food & meals"],
-          "meals": ["Chinese", "Non-veg"],
-          "shoppingItems": ["Gadgets"],
+          "ancilliaryServices": [
+            "Food & meals"
+          ],
+          "meals": [
+            "Chinese",
+            "Non-veg"
+          ],
+          "shoppingItems": [
+            "Gadgets"
+          ],
           "id": 1,
           "name": "Ankita Sahoo",
           "dateOfBirth": "15/02/1995",
@@ -386,9 +436,20 @@
           "address": "Kalinga, Orisa"
         }
       ],
-      "shoppingItems": ["Jewellery", "Toys", "Gadgets"],
-      "ancilliaryServices": ["Excess baggage", "Food & meals"],
-      "meals": ["Veg", "Non-veg", "Chinese"]
+      "shoppingItems": [
+        "Jewellery",
+        "Toys",
+        "Gadgets"
+      ],
+      "ancilliaryServices": [
+        "Excess baggage",
+        "Food & meals"
+      ],
+      "meals": [
+        "Veg",
+        "Non-veg",
+        "Chinese"
+      ]
     },
     {
       "id": 3,
@@ -546,9 +607,17 @@
       ],
       "passengersDetail": [
         {
-          "ancilliaryServices": ["Food & meals"],
-          "meals": ["Chinese", "French", "Non-veg"],
-          "shoppingItems": ["Gadgets"],
+          "ancilliaryServices": [
+            "Food & meals"
+          ],
+          "meals": [
+            "Chinese",
+            "French",
+            "Non-veg"
+          ],
+          "shoppingItems": [
+            "Gadgets"
+          ],
           "id": 1,
           "name": "Ankita Sahoo",
           "dateOfBirth": "15/02/1995",
@@ -560,9 +629,21 @@
           "address": "Kalinga, Orisa"
         }
       ],
-      "shoppingItems": ["Jewellery", "Toys", "Gadgets"],
-      "ancilliaryServices": ["Excess baggage", "Food & meals"],
-      "meals": ["Veg", "Non-veg", "Chinese", "French"]
+      "shoppingItems": [
+        "Jewellery",
+        "Toys",
+        "Gadgets"
+      ],
+      "ancilliaryServices": [
+        "Excess baggage",
+        "Food & meals"
+      ],
+      "meals": [
+        "Veg",
+        "Non-veg",
+        "Chinese",
+        "French"
+      ]
     },
     {
       "id": 4,
@@ -720,9 +801,17 @@
       ],
       "passengersDetail": [
         {
-          "ancilliaryServices": ["Food & meals"],
-          "meals": ["Chinese", "French", "Non-veg"],
-          "shoppingItems": ["Gadgets"],
+          "ancilliaryServices": [
+            "Food & meals"
+          ],
+          "meals": [
+            "Chinese",
+            "French",
+            "Non-veg"
+          ],
+          "shoppingItems": [
+            "Gadgets"
+          ],
           "id": 1,
           "name": "Ankita Sahoo",
           "dateOfBirth": "15/02/1995",
@@ -734,9 +823,21 @@
           "address": "Kalinga, Orisa"
         }
       ],
-      "shoppingItems": ["Jewellery", "Toys", "Gadgets"],
-      "ancilliaryServices": ["Excess baggage", "Food & meals"],
-      "meals": ["Veg", "Non-veg", "Chinese", "French"]
+      "shoppingItems": [
+        "Jewellery",
+        "Toys",
+        "Gadgets"
+      ],
+      "ancilliaryServices": [
+        "Excess baggage",
+        "Food & meals"
+      ],
+      "meals": [
+        "Veg",
+        "Non-veg",
+        "Chinese",
+        "French"
+      ]
     },
     {
       "id": 5,
@@ -894,9 +995,16 @@
       ],
       "passengersDetail": [
         {
-          "ancilliaryServices": ["Food & meals"],
-          "meals": ["Chinese", "Non-veg"],
-          "shoppingItems": ["Gadgets"],
+          "ancilliaryServices": [
+            "Food & meals"
+          ],
+          "meals": [
+            "Chinese",
+            "Non-veg"
+          ],
+          "shoppingItems": [
+            "Gadgets"
+          ],
           "id": 1,
           "name": "Arusha Chauhan",
           "dateOfBirth": "15/02/1998",
@@ -908,9 +1016,21 @@
           "address": "Kalinga, Orisa"
         }
       ],
-      "shoppingItems": ["Jewellery", "Toys", "Gadgets"],
-      "ancilliaryServices": ["Excess baggage", "Food & meals"],
-      "meals": ["Veg", "Non-veg", "Chinese", "American"]
+      "shoppingItems": [
+        "Jewellery",
+        "Toys",
+        "Gadgets"
+      ],
+      "ancilliaryServices": [
+        "Excess baggage",
+        "Food & meals"
+      ],
+      "meals": [
+        "Veg",
+        "Non-veg",
+        "Chinese",
+        "American"
+      ]
     }
   ]
 }
