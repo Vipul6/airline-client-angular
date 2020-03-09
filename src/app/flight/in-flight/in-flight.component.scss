@@ -128,3 +128,12 @@ $box-shadow: #00000033;
     }
   }
 }
+
+.modal {
+  width: 500px;
+
+  .dialog-action-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -38,11 +38,11 @@
     <h3 class="seat-details-header">Seat Details</h3>
     <div *ngFor="let item of seatsDetails; let i = index">
       <div class="grid-item">
-        <div [ngClass]="item.isOccupied === true ? 'occupied-seat' : 'vacant-seat'">
-          <div class="seat-details" (click)="
-              item.isOccupied === true &&
-                openCloseModal('checkedinModal', item.number)
-            ">
+        <div
+          [ngClass]="item.isOccupied === true ? 'occupied-seat' : 'vacant-seat'"
+          (click)="item.isOccupied && this.openDialog(item.number)"
+        >
+          <div class="seat-details">
             <span>{{ item.number }}</span>
           </div>
         </div>
@@ -56,22 +56,66 @@
     <h2 mat-dialog-title>Services</h2>
     <form [formGroup]="servicesForm" (ngSubmit)="onSubmit()">
       <label>Ancilliary Services</label>
-      <mat-select multiple formControlName="ancilliaryServices" (valueChange)="onchange('ancilliaryServices')">
-        <mat-option *ngFor="let service of flightDetails[0].ancilliaryServices" [value]="service">{{service}}</mat-option>
-      </mat-select>
+      <mat-form-field>
+        <mat-select
+          multiple
+          formControlName="ancilliaryServices"
+          (selectionChange)="onchange()"
+        >
+          <mat-option
+            *ngFor="let service of flightDetails[0].ancilliaryServices"
+            [value]="service"
+            >{{ service }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
 
       <label>Shopping Items</label>
-      <mat-select multiple formControlName="shoppingItems" (valueChange)="onchange('shoppingItems')">
-        <mat-option *ngFor="let service of flightDetails[0].shoppingItems" [value]="service">{{service}}</mat-option>
-      </mat-select>
+      <mat-form-field>
+        <mat-select
+          multiple
+          formControlName="shoppingItems"
+          (selectionChange)="onchange()"
+        >
+          <mat-option
+            *ngFor="let service of flightDetails[0].shoppingItems"
+            [value]="service"
+            >{{ service }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
 
       <label>Meals</label>
-      <mat-select multiple formControlName="meals" (valueChange)="onchange('meals')">
-        <mat-option *ngFor="let service of flightDetails[0].meals" [value]="service">{{service}}</mat-option>
-      </mat-select>
-      <div mat-dialog-actions>
-        <button type="button" (click)="openCloseModal()">Cancel</button>
-        <button type="submit" [disabled]="!submit">Submit</button>
+      <mat-form-field>
+        <mat-select
+          multiple
+          formControlName="meals"
+          (selectionChange)="onchange()"
+        >
+          <mat-option
+            *ngFor="let service of flightDetails[0].meals"
+            [value]="service"
+            >{{ service }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <div mat-dialog-actions class="dialog-action-container">
+        <button
+          mat-button
+          type="button"
+          class="primary-btn"
+          (click)="closeDialog()"
+        >
+          Cancel
+        </button>
+        <button
+          mat-button
+          type="submit"
+          class="secondary-btn"
+          [disabled]="!submit"
+        >
+          Submit
+        </button>
       </div>
     </form>
   </div>

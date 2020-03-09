@@ -26,11 +26,8 @@ export class InFlightComponent implements OnInit {
   passengersDetailsList: PassengerDetail[] = [];
   private unsubscribe$ = new Subject();
   servicesForm: FormGroup;
-  openModal = false;
   passengerDetails: PassengerDetail = null;
   submit = false;
-
-
 
   constructor(
     private store: Store,
@@ -40,47 +37,62 @@ export class InFlightComponent implements OnInit {
     private flightService: FlightService,
     private snacbarService: SnackbarService,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.flightId = parseInt(this.route.snapshot.params["flightId"], 10);
     this.flights$.pipe(takeUntil(this.unsubscribe$)).subscribe(res => {
       this.flightDetails = res;
-
       this.flightDetails = this.flightDetails.filter(
         item => item["id"] === this.flightId
       );
-
       this.seatsDetails = this.flightDetails[0].seatsDetail;
       this.passengersDetailsList = this.flightDetails[0].passengersDetail;
     });
   }
 
-  openCloseModal(type?, id?): void {
-    if (!this.openModal) {
-      this.passengerDetails = this.passengersDetailsList.filter(item => item.seatNumber === id)[0];
-      // const ancilliaryService = this.passengersDetailsList.filter(item => item.seatNumber === id)[0].ancilliaryServices;
-      this.servicesForm = this.fb.group({
-        ancilliaryServices: [this.passengerDetails.ancilliaryServices],
-        shoppingItems: [this.passengerDetails.shoppingItems],
-        meals: [this.passengerDetails.meals]
-      });
-    }
-    this.openModal = this.openModal === true ? false : true;
-    this.openModal ? this.dialog.open(this.servicesModal) : this.dialog.closeAll();
+  openDialog(id: string): void {
+    this.passengerDetails = JSON.parse(
+      JSON.stringify(
+        this.passengersDetailsList.filter(item => item.seatNumber === id)[0]
+      )
+    );
+    this.servicesForm = this.fb.group({
+      ancilliaryServices: [this.passengerDetails.ancilliaryServices],
+      shoppingItems: [this.passengerDetails.shoppingItems],
+      meals: [this.passengerDetails.meals]
+    });
+
+    this.submit = false;
+    this.dialog.open(this.servicesModal);
   }
 
-  onchange(type: string): void {
-    if (type === "shoppingItems" && this.passengerDetails.meals !== this.servicesForm.controls.shoppingItems.value) {
-      this.submit = true;
-    } else if (type === "ancilliaryServices" && this.passengerDetails.meals !== this.servicesForm.controls.ancilliaryServices.value) {
-      this.submit = true;
-    } else if (type === "meals" && this.passengerDetails.meals !== this.servicesForm.controls.meals.value) {
+  closeDialog(): void {
+    this.dialog.closeAll();
+  }
+
+  onchange(): void {
+    if (
+      this.isChanged("ancilliaryServices") ||
+      this.isChanged("shoppingItems") ||
+      this.isChanged("meals")
+    ) {
       this.submit = true;
     } else {
       this.submit = false;
     }
+  }
 
+  isChanged(type: string): boolean {
+    let returnValue = false;
+
+    if (
+      JSON.stringify(this.servicesForm.value[type].sort()) !==
+      JSON.stringify(this.passengerDetails[type].sort())
+    ) {
+      returnValue = true;
+    }
+    return returnValue;
   }
 
   onSubmit(): void {
@@ -89,9 +101,15 @@ export class InFlightComponent implements OnInit {
       return item.id === this.passengerDetails.id;
     });
 
-    flightList[0].passengersDetail[passengerIndex].ancilliaryServices = this.servicesForm.controls.ancilliaryServices.value;
-    flightList[0].passengersDetail[passengerIndex].shoppingItems = this.servicesForm.controls.shoppingItems.value;
-    flightList[0].passengersDetail[passengerIndex].meals = this.servicesForm.controls.meals.value;
+    flightList[0].passengersDetail[
+      passengerIndex
+    ].ancilliaryServices = this.servicesForm.controls.ancilliaryServices.value;
+    flightList[0].passengersDetail[
+      passengerIndex
+    ].shoppingItems = this.servicesForm.controls.shoppingItems.value;
+    flightList[0].passengersDetail[
+      passengerIndex
+    ].meals = this.servicesForm.controls.meals.value;
 
     this.flightService
       .updateFlight(this.flightId, flightList[0])
@@ -103,7 +121,7 @@ export class InFlightComponent implements OnInit {
             "Services updated.",
             "success-status"
           );
-          this.openCloseModal();
+          this.closeDialog();
         },
         error => {
           console.log(error);
@@ -113,6 +131,5 @@ export class InFlightComponent implements OnInit {
           );
         }
       );
-
   }
 }
