@@ -41,7 +41,7 @@ export class CheckInComponent implements OnInit, OnDestroy {
     private flightService: FlightService,
     private snacbarService: SnackbarService,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.flightId = parseInt(this.route.snapshot.params["flightId"], 10);
@@ -53,6 +53,8 @@ export class CheckInComponent implements OnInit, OnDestroy {
       );
       this.seatsDetails = this.flightDetails[0].seatsDetail;
       this.passengersDetailsList = this.flightDetails[0].passengersDetail;
+      console.log(this.flightDetails);
+
     });
   }
 
@@ -104,7 +106,7 @@ export class CheckInComponent implements OnInit, OnDestroy {
   onChangeCheckedInStatus() {
     this.submit =
       this.passengersDetails.isCheckedIn.toString() ===
-      this.checkedInform.controls["isCheckedIn"].value
+        this.checkedInform.controls["isCheckedIn"].value
         ? false
         : true;
   }
@@ -118,7 +120,7 @@ export class CheckInComponent implements OnInit, OnDestroy {
       return (
         flightList[0].passengersDetail[passengerIndex].seatNumber &&
         item.number ===
-          flightList[0].passengersDetail[passengerIndex].seatNumber
+        flightList[0].passengersDetail[passengerIndex].seatNumber
       );
     });
 
