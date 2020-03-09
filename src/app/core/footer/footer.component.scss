@@ -3,4 +3,7 @@ $nav-background: #20232a;
 .footer-container {
     background-color: $nav-background;
     color: white;
+    display: flex;
+    justify-content: center;
+    padding: 2px;
 }
